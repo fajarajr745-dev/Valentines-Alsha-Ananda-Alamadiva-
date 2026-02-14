@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentines day Alsha Ananda Almadiva ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        font-family: 'Segoe UI', cursive;
+        overflow: hidden;
+    }
+
+    .card {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 50px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        backdrop-filter: blur(10px);
+        animation: fadeIn 2s ease-in-out;
+        max-width: 400px;
+        position: relative;
+        z-index: 2;
+    }
+
+    h1 {
+        color: #e91e63;
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+
+    .typing {
+        font-size: 18px;
+        color: #444;
+        min-height: 50px;
+    }
+
+    .heart {
+        font-size: 60px;
+        animation: beat 1s infinite;
+        color: #ff1744;
+        margin-bottom: 15px;
+    }
+
+    @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .falling-heart {
+        position: absolute;
+        top: -10px;
+        font-size: 22px;
+        color: rgba(255, 255, 255, 0.8);
+        animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh);
+        }
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        background-color: #e91e63;
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    button:hover {
+        background-color: #c2185b;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Audio Linger -->
+<audio id="bgMusic" loop>
+    <source src="Paramore%20-%20The%20Only%20Exception.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <div class="heart">❤️</div>
+    <h1>Happy Valentine's Day</h1>
+    <p><strong>Untuk Alshaa 💕</strong></p>
+    <div class="typing" id="typing"></div>
+    <button onclick="playMusic()">Putar Lagu 🎵</button>
+</div>
+
+<script>
+    const text = "Selamat Hari Valentines Alshaa, Terimakasih sudah menjadi pendengae yang baik. Maaf yaa cuman bisa ngasih ucapan di hari Valentines  ✨💖";
+    let index = 0;
+
+    function typeEffect() {
+        if (index < text.length) {
+            document.getElementById("typing").innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeEffect, 50);
+        }
+    }
+
+    typeEffect();
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("falling-heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+
+    function playMusic() {
+        document.getElementById("bgMusic").play();
+    }
+</script>
+
+</body>
+</html>
